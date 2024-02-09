@@ -1,0 +1,250 @@
+<mvc:View
+    controllerName="projectdes.controller.ProductosV2"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    height="100%"
+    xmlns:core="sap.ui.core"
+>
+    <FlexBox
+        id="vbox"
+        direction="Row" 
+        alignItems="Start"
+    >
+    <ScrollContainer
+            id="scrollContainerTable"
+            vertical="true"
+            height="500px"
+            width="100%"
+        >
+        <smartTable:SmartTable
+            id="SmartTable1"
+            enableExport="true"
+            entitySet="Products"
+            smartFilterId="idsmartfilterbar"
+            tableType="ResponsiveTable"
+            showFullScreenButton="true"
+            beforeExport="onBeforeExport"
+            demandPopin="true"
+            useVariantManagement="true"
+            useTablePersonalisation="true"
+            header="Registros"
+            enableAutoBinding="true"
+            class="sapUiResponsiveContentPadding"
+        >
+            <Table
+                id="ResponsiveTable"
+                selectionChange="handleSelectionChange"
+                mode="MultiSelect"
+            >
+                <headerToolbar>
+                    <OverflowToolbar id="oftb1">
+                        <ToolbarSpacer id="TS21" />
+
+                        <Button
+                            id="ButtonCrear"
+                            text="Crear"
+                            type="Transparent"
+                            press="onCrear"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="columnaID">
+                        <Label
+                            id="labelID"
+                            text="ID"
+                        />
+                        <customData>
+                            <core:CustomData
+                                id="cd"
+                                key="p13nData"
+                                value="{'columnKey': 'ID', 'maxLength': '5',
+                'columnIndex':'4', 'leadingProperty': 'ID'}"
+                            />
+                        </customData>
+                    </Column>
+                    <Column id="columnaName">
+                        <Label
+                            id="labelName"
+                            text="Name"
+                        />
+                        <customData>
+                            <core:CustomData
+                                id="cd1"
+                                key="p13nData"
+                                value="{'columnKey': 'Name', 'maxLength': '5',
+                'columnIndex':'4', 'leadingProperty': 'Name'}"
+                            />
+                        </customData>
+                    </Column>
+                    <Column id="columnaDescription">
+                        <Label
+                            id="labelDescription"
+                            text="Description"
+                        />
+                        <customData>
+                            <core:CustomData
+                                id="cd2"
+                                key="p13nData"
+                                value="{'columnKey': 'Description', 'maxLength': '5',
+                'columnIndex':'4', 'leadingProperty': 'Description'}"
+                            />
+                        </customData>
+                    </Column>
+                    <Column id="columnaPrice">
+                        <Label
+                            id="labelPrice"
+                            text="Price"
+                        />
+                        <customData>
+                            <core:CustomData
+                                id="cd3"
+                                key="p13nData"
+                                value="{'columnKey': 'Price', 'maxLength': '5',
+                'columnIndex':'4', 'leadingProperty': 'Price'}"
+                            />
+                        </customData>
+                    </Column>
+
+                    <Column id="columnaDetalles">
+                        <Label
+                            id="labelDetalles"
+                            text="Detalles"
+                        />
+                        <customData>
+                            <core:CustomData
+                                id="cd5"
+                                key="p13nData"
+                                value="{'columnKey': 'Detalles', 'maxLength': '5',
+                'columnIndex':'4'}"
+                            />
+                        </customData>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="clitems">
+                        <cells>
+                            <Text
+                                id="textID"
+                                text="{ID}"
+                            />
+                            <Text
+                                id="textName"
+                                text="{Name}"
+                            />
+                            <Text
+                                id="textDescription"
+                                text="{Description}"
+                            />
+                            <Text
+                                id="textPrice"
+                                text="{Price}"
+                            />
+
+                            <HBox id="botones">
+                                <Button
+                                    id="buttonDetalles"
+                                    icon="sap-icon://learning-assistant"
+                                    press="onOpenForm"
+                                    class="sapUiSmallMarginEnd"
+                                />
+                                <Button
+                                    id="borrarButton"
+                                    icon="sap-icon://delete"
+                                    type="Transparent"
+                                    press="onBorrar"
+                                />
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </smartTable:SmartTable>
+        </ScrollContainer>
+       
+        <ScrollContainer
+            id="scrollContainerTable1"
+            vertical="true"
+            height="500px"
+            width="100%"
+        >
+            <Table
+                id="idProductsTable"
+                inset="false"
+                mode="MultiSelect"
+                items="{modelView>/results}"
+                busy="false"
+            >
+                <headerToolbar>
+                    <OverflowToolbar id="oftb">
+                        <Title
+                            id="TitleProducts2"
+                            text="Productos"
+                            level="H2"
+                        />
+                        <ToolbarSpacer id="TS2" />
+
+                        <Button
+                            id="newButton"
+                            text="Añadir a tabla Productos"
+                            type="Transparent"
+                            press="onNewRow"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column
+                        id="ColumnID"
+                        width="12em"
+                    >
+                        <Label
+                            id="TextID"
+                            text="ID"
+                        />
+                    </Column>
+                    <Column
+                        id="ColumnProduct"
+                        width="12em"
+                    >
+                        <Label
+                            id="TextProduct"
+                            text="Name"
+                        />
+                    </Column>
+                    <Column
+                        id="ColumnPrice"
+                        width="12em"
+                    >
+                        <Label
+                            id="TextPrice"
+                            text="Price"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="columnListItem">
+                        <cells>
+                            <Text
+                                id="OIID"
+                                text="{modelView>ProductID}"
+                            />
+
+                            <Text
+                                id="OIName"
+                                text="{modelView>ProductName}"
+                            />
+                            <Text
+                                id="OIPrice"
+                                text="{modelView>UnitPrice}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+    </FlexBox>
+</mvc:View>

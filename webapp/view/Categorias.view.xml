@@ -1,0 +1,31 @@
+<mvc:View
+    controllerName="projectdes.controller.Categorias"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <List
+        id="categoriesList"
+            items="{modelView>/results}"
+            headerText="Categorias"
+        >
+            <ObjectListItem
+                title="{modelView>Name}"
+                id="categorie"
+                type="Active"
+                press="onOpenInfo"
+            />
+        </List>
+        <Button
+            id="btnMain"
+            text="{i18n>btnMain}"
+            icon="sap-icon://undo"
+            press="onOpenMain"
+            class="sapUiSmallMarginEnd"
+        />
+    </Page>
+</mvc:View>

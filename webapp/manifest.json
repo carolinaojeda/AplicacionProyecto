@@ -1,0 +1,243 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "projectdes",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.12.1",
+            "toolsId": "0c939e7e-6d19-4edb-90c0-4536a2629262"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/V2/(S(hxhtt51bqno4wuworqh5gjse))/OData/OData.svc",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+    
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            },
+            "mainService2":{
+                "uri": "/V2/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.120.4",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "projectdes.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "useBatch": false
+                }
+            },
+            "Northwind": {
+                "dataSource": "mainService2",
+                "preload": true,
+                "settings": {
+                    "useBatch": false
+                }
+            },
+            "GlobalModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "settings": {},
+                "preload": false
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "projectdes.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMain",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetMain"
+                    ]
+                },
+                {
+                    "name": "RouteViewUni",
+                    "pattern": "Universidad/{lang}",
+                    "target": [
+                        "TargetViewUni"
+                    ]
+                },
+                {
+                    "name": "RouteViewCat",
+                    "pattern": "Categorias",
+                    "target": [
+                        "TargetViewCat"
+                    ]
+                },
+                {
+                    "name": "RouteViewProd",
+                    "pattern": "Productos",
+                    "target": [
+                        "TargetViewProd"
+                    ]
+                },
+                {
+                    "name": "RouteViewProdV2",
+                    "pattern": "ProductosV2",
+                    "target": [
+                        "TargetViewProdV2"
+                    ]
+                },
+                {
+                    "name": "RouteViewForm",
+                    "pattern": "Form/{id},{mode}",
+                    "target": [
+                        "TargetViewForm"
+                    ]
+                },
+                {
+                    "name": "RouteViewAnn",
+                    "pattern": "ProductosAnn/{id}",
+                    "target": [
+                        "TargetViewProductosAnn"
+                    ]
+                }
+                
+            ],
+            "targets": {
+                "TargetMain": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Main",
+                    "viewName": "Main"
+                },
+                "TargetViewUni": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Universidad",
+                    "viewName": "Universidad"
+                },
+                "TargetViewCat": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Categorias",
+                    "viewName": "Categorias"
+                },
+                "TargetViewProd": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Productos",
+                    "viewName": "Productos"
+                },
+                "TargetViewProdV2": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ProductosV2",
+                    "viewName": "ProductosV2"
+                },
+                "TargetViewForm": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Form",
+                    "viewName": "Form"
+                },
+                "TargetViewProductosAnn": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ProductosAnn",
+                    "viewName": "ProductosAnn"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "projectdes.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "projectdes"
+    }
+}

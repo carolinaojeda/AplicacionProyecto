@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog id="Borrar" title="Confirmation">
+        <VBox id="titulo">
+            <Text id="pregunta" text="Quieres borrar el proyecto con el ID: {modelView>/ID}?" />
+        </VBox>
+        <beginButton>
+            <Button id="si" text="Sí" press="onDeleteConfirm" />
+        </beginButton>
+        <endButton>
+            <Button id="no" text="No" press="onCloseDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,12 @@
+{
+    "base": "./dist",
+    "conn_usestrictssl" : false,
+    "conn_server": "http://saphana01.sapunisys.es:8081/",
+    "conn_client" : "client",
+    "conn_user": "COJEDA",
+    "conn_password": "18052003Cc",
+    "abap_package": "ZCOJEDA",
+    "abap_bsp": "ZCORDES",
+    "abap_bsp_text": "UI5",
+    "abap_transport": "SHUK900404"
+}

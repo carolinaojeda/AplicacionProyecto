@@ -1,0 +1,55 @@
+<mvc:View
+    controllerName="projectdes.controller.ProductosAnn"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    height="100%"
+    xmlns:core="sap.ui.core"
+>
+    <FlexBox
+        id="vbox"
+        direction="Column"
+        alignItems="Start"
+    >
+        <smartFilterBar:SmartFilterBar
+            id="smartFilterBar"
+            entitySet="Products"
+            useToolbar="false"
+            showFilterConfiguration="false"
+            initialise=".beforeRebindTable"
+           
+        >
+          
+            <smartFilterBar:controlConfiguration>
+            
+                <smartFilterBar:ControlConfiguration
+                    id="config"
+                    label="Categoría"
+                    key="Category.Name"
+                    visibleInAdvancedArea="true"
+                    preventInitialDataFetchInValueHelpDialog="false"
+
+                />
+                
+                
+            </smartFilterBar:controlConfiguration>
+        </smartFilterBar:SmartFilterBar>
+        <smartTable:SmartTable
+            id="ProductsSmartTable"
+            entitySet="Products"
+            enableExport="true"
+            smartFilterId="smartFilterBar"
+            header="Products"
+            showRowCount="true"
+            useVariantManagement="false"
+            useTablePersonalisation="true"
+            enableAutoBinding="true"
+            enableAutoColumnWidth="true"
+            initialise=".beforeRebindTable"
+        />
+    </FlexBox>
+</mvc:View>

@@ -1,0 +1,39 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/V2/(S(hdx5knnrbbo4weai5ydjfzsn))/OData/OData.svc/$metadata">
+		<edmx:Include Alias="ODataDemoService" Namespace="ODataDemo"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="proyectofinal.annotations.annotation.ODataDemo">
+			<Annotations Target="ODataDemoService.Product">
+    <Annotation Term="com.sap.vocabularies.UI.v1.LineItem">
+        <Collection>
+		<Record Type="UI.DataField">
+				<PropertyValue Property="Value" Path="ID"/>
+		</Record>
+						
+        <Record Type="com.sap.vocabularies.UI.v1.DataField">
+                <PropertyValue Property="Value" Path="Name"/>
+        </Record>
+        <Record Type="UI.DataField">
+				<PropertyValue Property="Value" Path="Description"/>a
+		</Record>
+	    <Record Type="UI.DataField">
+			<PropertyValue Property="Value" Path="Price"/>
+		</Record>
+		<Record Type="com.sap.vocabularies.UI.v1.DataField">
+            <PropertyValue Property="Label" String="CategoryName"/>
+            <PropertyValue Property="Value" Path="Category/Name"/>
+        </Record>
+        </Collection>
+    </Annotation>
+</Annotations>
+
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

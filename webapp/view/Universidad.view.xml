@@ -1,0 +1,78 @@
+<mvc:View
+    controllerName="projectdes.controller.Universidad"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+        
+    >
+        <VBox id="vbox">
+            <HBox id="box2">
+                <SearchField
+                    id="searchField"
+                    search="onSearch"
+                    placeholder="Search for a language..."
+                />
+                <Button
+                id="sortASC"
+                    icon="sap-icon://sort-ascending"
+                    tooltip="Filtrar ascendiente"
+                    press="sortAsc"
+                />
+                <Button
+                id="sortDESC"
+                    icon="sap-icon://sort-descending"
+                    tooltip="Filtrar descendiente"
+                    press="sortDesc"
+                />
+                <Button
+                    id="sortCLEAR"
+                    icon="sap-icon://clear-filter"
+                    tooltip="Limpiar filtros"
+                    press="clearAllSortings"
+                />
+            </HBox>
+            <table:Table
+                id="universityTable"
+                rows="{modelView>/}"
+                selectionMode="None"
+            >
+                <table:columns>
+                    <table:Column
+                        id="name"
+                        label="Country"
+                    >
+                        <table:template>
+                            <Text
+                                id="nametext"
+                                text="{modelView>name/common}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="capital"
+                        label="Capital"
+                    >
+                        <table:template>
+                            <Text
+                                id="capitaltext"
+                                text="{modelView>capital}"
+                            />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+        </VBox>
+        <Button
+            id="btnMain"
+            text="{i18n>btnMain}"
+            icon="sap-icon://undo"
+            press="onOpenMain"
+            class="sapUiSmallMarginEnd"
+        />
+    </Page>
+</mvc:View>

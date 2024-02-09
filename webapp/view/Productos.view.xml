@@ -1,0 +1,189 @@
+<mvc:View
+    controllerName="projectdes.controller.Productos"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="mainPage"
+        showHeader="false"
+        enableScrolling="true"
+        class="sapUiContentPadding"
+        showNavButton="false"
+    >
+        <Table
+            id="idProductsTable"
+            inset="false"
+            mode="MultiSelect"
+            items="{
+          	path: '/Products'
+			
+        }"
+        >
+            <headerToolbar>
+                <OverflowToolbar id="otbSubheader">
+                    <Title
+                        id="TitleProducts"
+                        text="Productos"
+                        level="H2"
+                    />
+                    <ToolbarSpacer id="TS" />
+                    <Button
+                        id="newRowButton"
+                        text="Añadir nuevo registro"
+                        type="Transparent"
+                        press="onNewRow"
+                        visible="{= !${viewModel>/editMode}}"
+                    />
+                    <Button
+                        id="crearButton"
+                        text="Crear"
+                        type="Transparent"
+                        press="onCrear"
+                        visible="{= !${viewModel>/editMode}}"
+                    />
+                    <Button
+                        id="borrarButton"
+                        text="Borrar registro"
+                        type="Transparent"
+                        press="onBorrar"
+                    />
+                    <Button
+                        id="saveButton"
+                        text="Guardar"
+                        type="Transparent"
+                        press="onSave"
+                        visible="{viewModel>/editMode}"
+                    />
+                    <Button
+                        id="cancelButton"
+                        text="Cancelar"
+                        type="Transparent"
+                        press="onCancel"
+                        visible="{viewModel>/editMode}"
+                    />
+
+                    <Button
+                        id="editButton"
+                        text="Editar"
+                        type="Transparent"
+                        press="onEdit"
+                    />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column
+                    id="ColumnID"
+                    width="12em"
+                >
+                    <Label
+                        id="TextID"
+                        text="ID"
+                    />
+                </Column>
+                <Column
+                    id="ColumnProduct"
+                    width="12em"
+                >
+                    <Label
+                        id="TextProduct"
+                        text="Producto"
+                    />
+                </Column>
+                <Column
+                    id="ColumnDescripcion"
+                    width="12em"
+                >
+                    <Label
+                        id="TextDescripcion"
+                        text="Descripcion"
+                    />
+                </Column>
+                <Column
+                    id="ColumnPrice"
+                    width="12em"
+                >
+                    <Label
+                        id="TextPrecio"
+                        text="Precio"
+                    />
+                </Column>
+                <Column
+                    id="ColumnRating"
+                    width="12em"
+                >
+                    <Label
+                        id="TextRating"
+                        text="Rating"
+                    />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="columnListItem">
+                    <cells>
+                        <Text
+                            id="OIID"
+                            text="{ID}"
+                        />
+                        <HBox id="hboxname">
+                            <Text
+                                id="OIName"
+                                text="{Name}"
+                                visible="{= !${viewModel>/editMode}}"
+                            />
+                            <Input
+                                id="inputNamecell"
+                                value="{Name}"
+                                visible="{viewModel>/editMode}"
+                            />
+                        </HBox>
+                        <HBox id="hboxdescription">
+                            <Text
+                                id="OIDescription"
+                                text="{Description}"
+                                visible="{= !${viewModel>/editMode}}"
+                            />
+                            <Input
+                                id="inputDescriptioncell"
+                                value="{Description}"
+                                visible="{viewModel>/editMode}"
+                            />
+                        </HBox>
+                        <HBox id="hboxprecio">
+                            <Text
+                                id="OIPrice"
+                                text="{Price}"
+                                visible="{= !${viewModel>/editMode}}"
+                            />
+                            <Input
+                                id="inputPricecell"
+                                value="{Price}"
+                                visible="{viewModel>/editMode}"
+                            />
+                        </HBox>
+                        <HBox id="hboxrating">
+                            <Text
+                                id="OIRating"
+                                text="{Rating}"
+                                visible="{= !${viewModel>/editMode}}"
+                            />
+                            <Input
+                                id="inputRatingcell"
+                                value="{Rating}"
+                                visible="{viewModel>/editMode}"
+                            />
+                        </HBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <Button
+            id="btnMain"
+            text="{i18n>btnMain}"
+            icon="sap-icon://undo"
+            press="onOpenMain"
+            class="sapUiSmallMarginEnd"
+        />
+    </Page>
+</mvc:View>

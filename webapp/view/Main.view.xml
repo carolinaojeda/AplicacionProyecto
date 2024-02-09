@@ -1,0 +1,85 @@
+<mvc:View
+    controllerName="projectdes.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <FlexBox
+            id="main"
+            alignItems="Center"
+            justifyContent="Center"
+            direction="Column"
+        >
+            <Image
+                id="imagen"
+                src="{/imageUrl}"
+                width="450px"
+                height="400px"
+            />
+            <Button
+                id="btnCategorias"
+                text="{i18n>btnCategorias}"
+                icon="sap-icon://education"
+                press="onOpenViewCat"
+                class="sapUiSmallMarginEnd"
+            />
+            <Button
+                id="btnProductos"
+                text="{i18n>btnProductos}"
+                icon="sap-icon://product"
+                press="onOpenViewProd"
+                class="sapUiSmallMarginEnd"
+            />
+            <Label
+                id="LabelInputV2"
+                text="Indique un idioma:"
+            />
+            <Input id="inputV2" />
+            <Button
+                id="btnUniversidad"
+                text="{i18n>btnUniversidad}"
+                icon="sap-icon://group"
+                press="onOpenViewUni"
+                class="sapUiSmallMarginEnd"
+            />
+
+            <Button
+                id="btnProductosV2"
+                text="{i18n>btnProductosV2}"
+                icon="sap-icon://add-product"
+                press="onOpenViewProdV2"
+                class="sapUiSmallMarginEnd"
+            />
+            <Label
+                id="labelprecio"
+                text="Filtrar por producto"
+            />
+            <HBox id="inputhbox">
+                <ComboBox
+                    id="combobox"
+                    showSecondaryValues= "true"
+                    width="250px"
+                    items="{
+						path: '/categories/results',
+						sorter: { path: 'Name' }
+					}">
+					<core:ListItem id="item" key="{Name}" text="{Name}"/>
+                </ComboBox>
+               
+            </HBox>
+
+            <Button
+                id="btnProductosAnn"
+                text="Filtrar productos"
+                icon="sap-icon://filter"
+                press="onOpenViewProdAnn"
+                class="sapUiSmallMarginEnd"
+            />
+        </FlexBox>
+    </Page>
+</mvc:View>
